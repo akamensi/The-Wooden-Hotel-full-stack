@@ -39,8 +39,10 @@ function Filter({ filterField, options }) {
   const [searchParams, setSearchPramas] = useSearchParams();
 
   const currebtFilter = searchParams.get(filterField) || options.at(0).value;
+
   function handleClick(value) {
     searchParams.set(filterField, value);
+    if (searchParams.get("page")) searchParams.set("page", 1);
     setSearchPramas(searchParams);
   }
   return (
